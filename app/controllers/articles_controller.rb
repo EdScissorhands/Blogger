@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
+  before_filter :require_login, only: [:new, :edit, :create, :update]
 
   def index
     @articles = Article.all
@@ -12,7 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+      @article = Article.new
   end
 
   def create
@@ -46,7 +47,7 @@ class ArticlesController < ApplicationController
     redirect_to article_path(@article)
   end
 
-  
+
 
 
 
